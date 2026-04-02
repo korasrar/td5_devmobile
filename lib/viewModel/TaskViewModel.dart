@@ -14,7 +14,7 @@ class TaskViewModel extends ChangeNotifier {
 
   Future<void> loadTasks() async {
     _liste = await _dbService.getTasks();
-    ();
+    notifyListeners();
   }
 
   Future<void> addTask(Task task) async {
