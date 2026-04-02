@@ -24,12 +24,8 @@ class MyTD2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => SettingViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => TaskViewModel(), // On ne génère plus de tasks ici systématiquement
-        ),
+        ChangeNotifierProvider(create: (_) => SettingViewModel()),
+        ChangeNotifierProvider(create: (_) => TaskViewModel()),
       ],
       child: Consumer<SettingViewModel>(
         builder: (context, SettingViewModel notifier, child) {
