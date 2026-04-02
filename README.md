@@ -13,6 +13,8 @@ tags text null,
 constraint tasks_pkey primary key (id)
 ) TABLESPACE pg_default;
 
+et désactiver le RLS!!
+
 ## Lancer l'application
 
 ### Configuration Supabase

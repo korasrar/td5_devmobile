@@ -23,18 +23,17 @@ class Task {
     var tagsRaw = json['tags'];
     List<String> tagsList = [];
 
+    // j'avais une erreur avec les tags et supabase
     if (tagsRaw is String) {
       try {
-        // Tente de décoder si c'est une chaîne JSON (ex: '["tag1", "tag2"]')
+
         var decoded = jsonDecode(tagsRaw);
         if (decoded is List) {
           tagsList = List<String>.from(decoded);
         } else {
-          // Sinon traite comme une chaîne séparée par des virgules
           tagsList = tagsRaw.split(',').map((e) => e.trim()).where((e) => e.isNotEmpty).toList();
         }
       } catch (e) {
-        // En cas d'erreur de décodage JSON, split classique
         tagsList = tagsRaw.split(',').map((e) => e.trim()).where((e) => e.isNotEmpty).toList();
       }
     } else if (tagsRaw is List) {
@@ -56,7 +55,7 @@ class Task {
     return {
       if (id != null) 'id': id,
       'title': title,
-      'tags': tags, // Supabase accepte les List si la colonne est jsonb ou text[]
+      'tags': tags,
       'nbhours': nbhours,
       'difficulty': difficulty,
       'description': description,
